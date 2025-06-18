@@ -18,8 +18,8 @@ pipeline {
             parallel {
                 stage('Security Audit') {
                     steps {
-                        sh 'npm audit fix || true'
-                        sh 'npm audit || true' 
+                        sh 'npm audit fix --force || true'
+                        sh 'npm audit || true'
                     }
                 }
 
