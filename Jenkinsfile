@@ -10,7 +10,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                sh 'npm install'
             }
         }
 
@@ -18,13 +18,13 @@ pipeline {
             parallel {
                 stage('Security Audit') {
                     steps {
-                        bat 'npm audit'
+                        sh 'npm audit'
                     }
                 }
 
                 stage('Run Tests') {
                     steps {
-                        bat 'npm run test'
+                        sh 'npm run test'
                     }
                 }
             }
@@ -33,7 +33,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 input message: 'Approve deployment?', ok: 'Deploy'
-                bat 'echo Deploying application...'  // Replace this with real deploy command
+                sh 'echo Deploying application...'  // Replace this with real deploy command
             }
         }
     }
